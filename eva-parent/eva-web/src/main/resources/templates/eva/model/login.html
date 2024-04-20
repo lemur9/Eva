@@ -59,12 +59,14 @@
                                 //请求内容编码类型
                                 contentType: "application/json;charset=UTF-8",
                                 //请求的服务器地址
-                                url: "http://127.0.0.1:8088/eva-web/hello?token=e8397890f542ee6f39649b8fbf5804f7",
+                                url: "http://127.0.0.1:8088/eva-web/goto/hello?token="+ result.meta.token,
                                 //数据，json字符串
                                 // data: JSON.stringify(reqData),
                                 //请求成功的回调函数
                                 success: function (result) {
-                                    console.log(result);
+                                    var protocol = location.protocol;
+                                    var host = location.host;
+                                    location.href = protocol + "//" + host +"/eva-web/index/"+ result.meta;
                                 },
                                 //请求失败的回调函数，包含具体的错误信息
                                 error: function (e) {

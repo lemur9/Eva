@@ -23,4 +23,11 @@ public class IndexController {
         String str = pageId.replaceAll("-", "/");
         return "/index/model/" + str;
     }
+
+    @ResponseBody
+    @GetMapping({"goto/{pageId}"})
+    public DataResult<Object> parsePage(@PathVariable("pageId") String pageId) {
+        String str = pageId.replaceAll("-", "/");
+        return new DataResult<>().ok(str);
+    }
 }
