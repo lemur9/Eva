@@ -4,117 +4,43 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
-<!--        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
-        <script th:src="@{/static/eva/js/jquery.min.js}"></script>
-        <style>
-            .captcha {
-                width: 150px;
-                height: 40px;
-            }
-        </style>
-        <script>
-
-            $(document).ready(function () {
-                getcaptcha();
-            })
-
-            function getcaptcha() {
-                //处理浏览器兼容性
-                var windowUrl = window.URL || window.webkitURL;
-                var xhr = new XMLHttpRequest();
-                //验证码请求地址
-                var url = "http://localhost:8088/eva-web/captcha?uuid=1&token=1";
-                xhr.open("GET", url, true);
-                xhr.responseType = "blob";
-                xhr.onload = function () {
-                    if (this.status == 200) {
-                        var blob = this.response;
-                        $("#captchaImg").attr("src", windowUrl.createObjectURL(blob));
-                    }
-                }
-                xhr.send();
-            }
-
-            function login() {
-                var username = $("#username").val();
-                var password = $("#password").val();
-                var captcha = $("#captcha").val();
-                var reqData = {id: 1, username: username, password: password, captcha: captcha}
-
-                $.ajax({
-                    //请求方式
-                    type: "POST",
-                    //请求内容编码类型
-                    contentType: "application/json;charset=UTF-8",
-                    //请求的服务器地址
-                    url: "http://127.0.0.1:8088/eva-web/login",
-                    //数据，json字符串
-                    data: JSON.stringify(reqData),
-                    //请求成功的回调函数
-                    success: function (result) {
-                        if (result.code == 200) {
-                            $.ajax({
-                                //请求方式
-                                type: "GET",
-                                //请求内容编码类型
-                                contentType: "application/json;charset=UTF-8",
-                                //请求的服务器地址
-                                url: "http://127.0.0.1:8088/eva-web/goto/hello?token="+ result.meta.token,
-                                //数据，json字符串
-                                // data: JSON.stringify(reqData),
-                                //请求成功的回调函数
-                                success: function (result) {
-                                    var protocol = location.protocol;
-                                    var host = location.host;
-                                    location.href = protocol + "//" + host +"/eva-web/index/"+ result.meta;
-                                },
-                                //请求失败的回调函数，包含具体的错误信息
-                                error: function (e) {
-                                    console.log(e.status);
-                                    console.log(e.responseText);
-                                }
-                            });
-                        }
-                        console.log(result);
-                    },
-                    //请求失败的回调函数，包含具体的错误信息
-                    error: function (e) {
-                        console.log(e.status);
-                        console.log(e.responseText);
-                    }
-                });
-            }
-
-            function validateForm() {
-                var username = $("#username").val();
-                var password = $("#password").val();
-                if (username.trim() === "" || password.trim() === "") {
-                    alert("Please enter both username and password.");
-                    return false;
-                }
-                return true;
-            }
-        </script>
+        <!--        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+        <script th:src="@{/static/core/js/jquery.min.js}"></script>
+        <link rel="stylesheet" th:href="@{/static/eva/cs/login.css}">
+        <script th:src="@{/static/eva/js/login_render.js}"></script>
     </head>
     <body>
-        <h2>Login</h2>
-        <form action="#" onsubmit="validateForm()" autocomplete="off">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value="admin" required>
+        <div class="cho-login-body">
+            <div class="cho-login-thead">
+                <img id="lemurLogo" th:src="@{/static/eva/img/lemur.png}" alt="lemur.png">
             </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" value="admin" required>
+            <div class="cho-login-tbody">
+                <div class="title-wrapper">
+                    <h1 class="title">欢迎回来</h1>
+                </div>
+                <div class="login-container">
+                    <div class="cho-login-form">
+                        <div class="cho-login-username">
+                            <input type="text" id="username" name="username" required>
+                            <label class="cho-username-label" for="username">用户名称</label>
+                        </div>
+                        <div class="cho-login-password">
+                            <input type="password" id="password" name="password" required>
+                            <label class="cho-password-label" for="password">密码</label>
+                        </div>
+                        <div  class="cho-login-captcha">
+                            <input type="text" id="captcha" name="captcha" required>
+                            <label class="cho-captcha-label" for="captcha">验证码</label>
+                            <a class="captcha">
+                                <img id="captchaImg" th:src="@{/static/eva/img/white.png}" alt="captcha"/>
+                            </a>
+                        </div>
+                        <div>
+                            <input class="cho-eva-login" type="button" value="登 录">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label for="captcha">captcha:</label>
-                <input type="text" id="captcha" name="captcha" required>
-                <a onclick="getcaptcha()"><img id="captchaImg" class="captcha" th:src="@{/static/eva/img/white.png}" alt="captcha"/></a>
-            </div>
-            <div>
-                <input class="cho-eva-login" onclick="login()" type="button" value="login...">
-            </div>
-        </form>
+        </div>
     </body>
 </html>

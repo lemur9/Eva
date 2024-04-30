@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Söhne, -apple-system, BlinkMacSystemFont, Helvetica, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    background-color: #f5f5f5;
+}
+
+.cho-login-body {
+    text-align: center;
+}
+
+.cho-login-form {
+
+}
+
+.login-container {
+    width: 400px;
+    height: 446px;
+    margin: 0 auto;
+}
+
+.cho-login-tbody {
+    width: 100%;
+    padding: 40px 0;
+}
+
+#username {
+    width: 320px;
+    height: 52px;
+    border: 1px solid #c2c8d0;
+    border-radius: 6px;
+}
+
+#username:hover,
+#username:focus {
+    border-color: #10a37f;
+}
+
+#password {
+    margin-top: 14px;
+    width: 320px;
+    height: 52px;
+    border: 1px solid #c2c8d0;
+    border-radius: 6px;
+}
+
+#password:hover {
+    border-color: #10a37f;
+}
+
+#captcha {
+    margin-top: 14px;
+    width: 320px;
+    height: 52px;
+    border: 1px solid #c2c8d0;
+    border-radius: 6px;
+}
+
+#captcha:hover {
+    border-color: #10a37f;
+}
+
+.cho-eva-login {
+    margin-top: 14px;
+    width: 320px;
+    height: 52px;
+    border: 1px solid #c2c8d0;
+    border-radius: 6px;
+    background-color: #10a37f;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.cho-username-label {
+    position: absolute;
+    top: 326px;
+    left: 800px;
+    color: #6f7780;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    padding: 1px 6px;
+}
+
+.cho-password-label {
+    position: absolute;
+    top: 396px;
+    left: 800px;
+    color: #6f7780;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    padding: 1px 6px;
+}
+
+.cho-captcha-label {
+    position: absolute;
+    top: 462px;
+    left: 800px;
+    color: #6f7780;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    padding: 1px 6px;
+}
+
+#captchaImg {
+    float: right;
+    position: absolute;
+    top: 452px;
+    left: 940px;
+    color: #6f7780;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    padding: 1px 6px;
+}
+
+.title-wrapper {
+    padding: 40px 40px 24px;
+    box-sizing: content-box;
+}
+
+.title {
+    margin: 24px 0 0;
+    font-size: 32px;
+    color: #2d333a
+}
+
+#lemurLogo {
+    height: 128px;
+    margin: 0px auto 0;
+}
