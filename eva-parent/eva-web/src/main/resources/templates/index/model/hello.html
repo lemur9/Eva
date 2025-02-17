@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Hey Eva</title>
     </head>
     <body>
-        <h1>Hey Eva</h1>
+        <a th:href="@{/locale(lang=es_ES)}" >中文</a>
+        <a th:href="@{/locale(lang=en_US)}" >英语</a>
+        <h1 th:text="#{welcome.message}">Eva</h1>
     </body>
 </html>

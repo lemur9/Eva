@@ -18,14 +18,14 @@ public class IndexController {
         return new DataResult<String>().ok(tips);
     }
 
-    @GetMapping({"index/{pageId}"})
+    @GetMapping("index/{pageId}")
     public String index(@PathVariable("pageId") String pageId) {
         String str = pageId.replaceAll("-", "/");
         return "/index/model/" + str;
     }
 
     @ResponseBody
-    @GetMapping({"goto/{pageId}"})
+    @GetMapping("goto/{pageId}")
     public DataResult<Object> parsePage(@PathVariable("pageId") String pageId) {
         String str = pageId.replaceAll("-", "/");
         return new DataResult<>().ok(str);
